@@ -1,6 +1,10 @@
 *.class
 *.log
-/Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/*
+/target/
+/Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/
+
+/.bsp/
+/Users/alexchen/Documents/repo/htx/htx_q/htx-de/.bsp/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
