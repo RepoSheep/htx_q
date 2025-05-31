@@ -2,7 +2,12 @@
 *.log
 htx_q/htx-de/target/*
 htx_q/htx-de/src/main/scala/.bsp/*
-/.bsp/
+*/.bsp/*
+
+*.parquet/
+*.parquet
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+htx-de/target/*
+htx-de/target/

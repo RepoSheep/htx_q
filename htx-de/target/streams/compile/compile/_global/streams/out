@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E006] Not Found Error: /Users/alexchen/Documents/repo/htx/htx_q/htx-de/src/main/scala/htxQ.scala:56:4 [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m56 |[0m    write_parquet_df(item_rank_df,[31m"item_rank_df.parquet"[0m)[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m   |[0m    ^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m    Not found: write_parquet_df[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m longer explanation available when compiling with `-explain`[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

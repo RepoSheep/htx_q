@@ -6,6 +6,13 @@ class htxQ_class(spark: SparkSession) {
     spark.read.parquet(path)
   }
 
+  def write_parquet_df(df: DataFrame, path: String): Unit = {
+    df.coalesce(1) // Ensure a single output file
+      .write
+      .mode("overwrite")
+      .parquet(path)
+  }
+
   def compute_item_rank(trans: DataFrame, ref_table: DataFrame): DataFrame = {
     val joined_df = trans.alias("trans")
       .join(
@@ -49,6 +56,7 @@ object Main {
     val item_rank_df = htxC.compute_item_rank(trans, ref_table)
     item_rank_df.show(100, truncate = false)
 
-    spark.stop()
+    htxC.write_parquet_df(item_rank_df, "item_rank_df")
+    // spark.stop()
   }
 }
