@@ -11,7 +11,7 @@ object Main {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
       .appName("htx-de")
-      .master("local[*]") // Add this line to run Spark locally
+      .master("local[*]") 
       .getOrCreate()
     val printer = new htxQ_class(spark)
     printer.read_parquet_df("/Users/alexchen/Documents/repo/htx/htx_q/data/trans.parquet")
