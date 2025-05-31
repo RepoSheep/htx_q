@@ -1,0 +1,17 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/htx-de_3-0.1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	htxQ_class.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/htxQ_class.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SampleClass.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/SampleClass.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SampleClass.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/SampleClass.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	htxQ_class.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/htxQ_class.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/Main.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/alexchen/Documents/repo/htx/htx_q/htx-de/target/scala-3.7.0/classes/Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
