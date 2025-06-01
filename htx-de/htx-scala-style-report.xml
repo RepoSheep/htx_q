@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.0">
+ <file name="/Users/alexchen/Documents/repo/htx/htx_q/htx-de/src/main/scala/htxQ.scala">
+  <error line="1" source="org.scalastyle.file.HeaderMatchesChecker" severity="warning" message="Header does not match expected text"/>
+  <error column="6" line="5" source="org.scalastyle.scalariform.ClassNamesChecker" severity="warning" message="Class name does not match the regular expression '^[A-Z][A-Za-z]*$'"/>
+  <error column="55" line="66" source="org.scalastyle.scalariform.MagicNumberChecker" severity="warning" message="Magic Number"/>
+  <error column="6" line="6" source="org.scalastyle.scalariform.MethodNamesChecker" severity="warning" message="Method name does not match the regular expression '^[a-z][A-Za-z0-9]*(_=)?$'"/>
+  <error column="6" line="10" source="org.scalastyle.scalariform.MethodNamesChecker" severity="warning" message="Method name does not match the regular expression '^[a-z][A-Za-z0-9]*(_=)?$'"/>
+  <error column="6" line="18" source="org.scalastyle.scalariform.MethodNamesChecker" severity="warning" message="Method name does not match the regular expression '^[a-z][A-Za-z0-9]*(_=)?$'"/>
+  <error column="6" line="25" source="org.scalastyle.scalariform.MethodNamesChecker" severity="warning" message="Method name does not match the regular expression '^[a-z][A-Za-z0-9]*(_=)?$'"/>
+  <error source="org.scalastyle.file.NewLineAtEofChecker" severity="warning" message="File must end with newline character"/>
+  <error column="12" line="29" source="org.scalastyle.scalariform.MultipleStringLiteralsChecker" severity="warning" message="The string literal &quot;trans.geographical_location_oid&quot; appears 5 times in the file."/>
+  <error column="45" line="39" source="org.scalastyle.scalariform.MultipleStringLiteralsChecker" severity="warning" message="The string literal &quot;item_rank&quot; appears 4 times in the file."/>
+ </file>
+</checkstyle>
