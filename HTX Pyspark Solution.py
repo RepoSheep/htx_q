@@ -1,9 +1,4 @@
 # Databricks notebook source
-#give the instructions to setup the scala env
-#only use RDD 
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC start of test dataset generation
 
@@ -48,10 +43,6 @@ display(trans)
 
 # COMMAND ----------
 
-pwd()
-
-# COMMAND ----------
-
 from pyspark.sql.types import StructType, StructField, LongType, StringType
 from pyspark.sql import Row
 
@@ -75,7 +66,7 @@ data_new = [
 
 ref_table = spark.createDataFrame(data_new, schema_new)
 display(ref_table)
-ref_table.write.mode("overwrite").parquet("./ref_table.parquet")
+# ref_table.write.mode("overwrite").parquet("./ref_table.parquet")
 
 # COMMAND ----------
 
@@ -92,7 +83,7 @@ joined_df = trans.alias("trans").join(
     col("trans.geographical_location_oid") == col("ref_table.geographical_location_oid"),
     "left"
 )
-display(joined_df.limit(5))
+# display(joined_df.limit(5))
 
 # Group by and aggregate with alias
 item_rank_df = joined_df.groupBy(
@@ -173,6 +164,7 @@ class htx_custom:
         self.output_path = output_path
         self.top_x = top_x
 
+
     def load_data(self) -> (DataFrame, DataFrame):
         trans = spark.read.parquet(self.input_path1)
         ref_table = spark.read.parquet(self.input_path2)
@@ -214,3 +206,64 @@ class htx_custom:
 # initalize
 # processor = htx_custom("./trans.parquet", "./ref_table.parquet", "./output.parquet", top_x = 10)
 # processor.run()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC #solution class
+# MAGIC
+
+# COMMAND ----------
+
+
+# Final Solution: 
+from pyspark.sql.functions import col, count, row_number
+from pyspark.sql.window import Window
+
+class HTXC:
+    def __init__(self, trans_path, ref_table_path, output_path, top_x=10):
+        self.trans_path = trans_path
+        self.ref_table_path = ref_table_path
+        self.output_path = output_path
+        self.top_x = top_x
+
+    def read_parquet_file(self, path):
+        return spark.read.parquet(path)
+
+    def transformation(self):
+        trans = self.read_parquet_file(self.trans_path)
+        ref_table = self.read_parquet_file(self.ref_table_path)
+
+        joined_df = trans.alias("trans").join(
+            ref_table.alias("ref_table"),
+            col("trans.geographical_location_oid") == col("ref_table.geographical_location_oid"),
+            "left"
+        )
+
+        item_counts = (
+            joined_df.groupBy(col("trans.geographical_location_oid"), col("trans.item_name"))
+            .agg(count("detection_oid").alias("detection_count"))
+        )
+
+        window_spec = Window.partitionBy(col("trans.geographical_location_oid")).orderBy(col("detection_count").desc())
+        ranked_items = item_counts.withColumn("item_rank", row_number().over(window_spec))
+        filtered_df = ranked_items.filter(col("item_rank") <= self.top_x)
+        final_df = filtered_df.select(
+            col("trans.geographical_location_oid").alias("geographical_location"),
+            col("item_rank"),
+            col("trans.item_name")
+        )
+        return final_df
+
+    def output_parquet_file(self, df):
+        df.coalesce(1).write.mode('overwrite').parquet(self.output_path)
+
+
+processor = HTXC(trans_path="file:/Workspace/Users/alex_chen@cpf.gov.sg/HT Question/htx_q/data/trans.parquet", 
+                ref_table_path="file:/Workspace/Users/alex_chen@cpf.gov.sg/HT Question/htx_q/data/ref_table.parquet", 
+                output_path="./output.parquet",
+                top_x=2)
+
+final_df = processor.transformation()
+display(final_df)
+processor.output_parquet_file(final_df)
